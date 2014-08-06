@@ -14,7 +14,7 @@ Deserializing ImmutableCollections became an issue for me when I had to serializ
 
 Being able to deserialize a List as an ImmutableList isn't something I've done but.. it's there.
 
-Serializing/deserializing Optionals was less of a real-world scenario and more of something I did for the fun.
+Serializing/deserializing Optionals was less of a real-world scenario and more of something I did for fun.
 
 ###How?
 
