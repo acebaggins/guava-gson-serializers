@@ -45,6 +45,9 @@ final Gson gson = new GsonBuilder().registerTypeAdapterFactory( OptionalTypeFact
 ```
 ###What?
 
+Supports, currently, up to Java 1.7, gson 2, and guava 17. 
+
+
 #####Currently supported
 * ImmutableList (List)
 * ImmutableSet (Set)
