@@ -1,7 +1,7 @@
 gson-serializers
 ================
 
-Gson serializers for Guava and JDK/Guava Optionals
+Gson serializers for Guava ImmutableCollections and Optional
 =======
 Expanded serializers for Gson
 

@@ -10,8 +10,7 @@ import com.google.common.reflect.TypeParameter;
 import com.google.common.reflect.TypeToken;
 
 @SuppressWarnings ( {"unchecked", "serial"} ) 
-public class Types {
-	
+public class Types {	
 	public static <K,V> TypeToken<Map<K,V>> mapOf(final Type key, final Type value) {
 		return new TypeToken<Map<K,V>>() {}
 		.where( newTypeParameter(), typeTokenOf( key ))		
