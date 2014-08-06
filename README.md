@@ -1,7 +1,60 @@
 gson-serializers
 ================
 
-Gson serializers for Guava ImmutableCollections and Optional
-=======
-Expanded serializers for Gson
+Expanded serialization for Gson to include Guava ImmutableCollections, ImmutableMaps, and Optionals
 
+All of the JDK based ImmutableCollections from [the Guava immutable collections page] (https://code.google.com/p/guava-libraries/wiki/ImmutableCollectionsExplained) are supported.
+
+
+
+
+####Why?
+Deserializing ImmutableCollections became an issue for me when I had to serialize something I hadn't intended to serialize. Rather than changing code or compromising thread-safety it may be a better idea just to let ImmutableCollections continue being ImmutableCollections. 
+
+Being able to deserialize a List as an ImmutableList isn't something I've done but.. it's there.
+
+Serializing/deserializing Optionals was less of a real-world scenario and more of something I did for the fun.
+
+###How?
+
+A few ways. 
+
+
+For a specific class..
+
+```java
+		final Gson gson = new GsonBuilder().registerTypeAdapter(ImmutableList.class, new ImmutableListDeserializer()).create();
+```
+or, if the mood grabs you..
+
+```java
+		final Gson gson = new GsonBuilder().registerTypeAdapter(List.class, new ImmutableListDeserializer()).create();
+```
+TypeAdapters has convenience methods to grab all of the adapters.
+```java
+  Map<Type, JsonDeserializer<?>> adapters = TypeAdapters.immutableTypeMap(); //returns the immutable interfaces and their implementation
+```
+On the other hand,
+```java
+  Map<Type, JsonDeserializer<?>> adapters = TypeAdapters.immutableImplemntationMap(); //returns the jdk interfaces and their corresponding immutable collection
+```
+
+To use the Optional type factory..
+```java
+final Gson gson = new GsonBuilder().registerTypeAdapterFactory( OptionalTypeFactory.forGuava() ).create();
+```
+###What?
+
+#####Currently supported
+* ImmutableList (List)
+* ImmutableSet (Set)
+* ImmutableSortedSet (SortedSet)
+* ImmutableMap (Map)
+* ImmutableSortedMap (SortedMap) 
+* [Optionals] (https://code.google.com/p/guava-libraries/wiki/UsingAndAvoidingNullExplained#Optional)
+
+###Where? 
+That's a weird question.
+
+###Who? 
+Built by me for the wonderful Guava and Gson libraries. 
