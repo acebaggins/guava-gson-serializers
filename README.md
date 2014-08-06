@@ -2,6 +2,7 @@ gson-serializers
 ================
 
 Expanded serialization for Gson to include Guava ImmutableCollections, ImmutableMaps, and Optionals.
+
 **New** For the Java 8 release, the JDK Optional class is now supported.
 
 All of the JDK based ImmutableCollections from [the Guava immutable collections page] (https://code.google.com/p/guava-libraries/wiki/ImmutableCollectionsExplained) are supported.
