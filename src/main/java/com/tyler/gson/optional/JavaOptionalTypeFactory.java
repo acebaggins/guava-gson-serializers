@@ -10,7 +10,7 @@ class JavaOptionalTypeFactory extends OptionalTypeFactory {
 		
 	@Override
 	public <T> boolean isOptionalType(TypeToken<T> typeToken) {
-		return typeToken.getRawType() != Optional.class && ( typeToken.getType() instanceof ParameterizedType );			
+		return typeToken.getRawType() == Optional.class && (typeToken.getType() instanceof ParameterizedType);				
 	}
 
 	@SuppressWarnings("unchecked")
@@ -18,7 +18,7 @@ class JavaOptionalTypeFactory extends OptionalTypeFactory {
 		return (OptionalTypeAdapter<E, T>) new JDKOptionalAdapter<T>(elementAdapter);		
 	}
 	
-	static class JDKOptionalAdapter<T> extends OptionalTypeAdapter<Optional<T>,T> {
+	public static class JDKOptionalAdapter<T> extends OptionalTypeAdapter<Optional<T>,T> {
 		
 		protected JDKOptionalAdapter( final TypeAdapter<T> elementAdapter ) {
 			super(elementAdapter);			
