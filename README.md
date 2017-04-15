@@ -10,14 +10,14 @@ All of the JDK based ImmutableCollections from [the Guava immutable collections 
 
 
 
-####Why?
+#### Why?
 Deserializing ImmutableCollections became an issue for me when I had to serialize something I hadn't intended to serialize. Rather than changing code or compromising thread-safety it may be a better idea just to let ImmutableCollections continue being ImmutableCollections. 
 
 Being able to deserialize a List as an ImmutableList isn't something I've done but.. it's there.
 
 Serializing/deserializing Optionals was less of a real-world scenario and more of something I did for fun.
 
-###How?
+### How?
 
 A few ways. 
 
@@ -50,12 +50,12 @@ Or, if you want to use the new JDK Optional class..
 final Gson gson = new GsonBuilder().registerTypeAdapterFactory( OptionalTypeFactory.forJDK() ).create();
 ```
 
-###What?
+### What?
 
 Targeted for JDK 8. 
 
 
-#####Currently supported
+##### Currently supported
 * ImmutableList (List)
 * ImmutableSet (Set)
 * ImmutableSortedSet (SortedSet)
@@ -64,8 +64,8 @@ Targeted for JDK 8.
 * [Optionals] (https://code.google.com/p/guava-libraries/wiki/UsingAndAvoidingNullExplained#Optional)
 * JDK 8 Optionals
 
-###Where? 
+### Where? 
 That's a weird question.
 
-###Who? 
+### Who? 
 Built by me for the wonderful Guava and Gson libraries. 
