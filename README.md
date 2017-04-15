@@ -25,29 +25,29 @@ A few ways.
 For a specific class..
 
 ```java
-		final Gson gson = new GsonBuilder().registerTypeAdapter(ImmutableList.class, new ImmutableListDeserializer()).create();
+Gson gson = new GsonBuilder().registerTypeAdapter(ImmutableList.class, new ImmutableListDeserializer()).create();
 ```
 or, if the mood grabs you..
 
 ```java
-		final Gson gson = new GsonBuilder().registerTypeAdapter(List.class, new ImmutableListDeserializer()).create();
+Gson gson = new GsonBuilder().registerTypeAdapter(List.class, new ImmutableListDeserializer()).create();
 ```
 TypeAdapters has convenience methods to grab all of the adapters.
 ```java
-  Map<Type, JsonDeserializer<?>> adapters = TypeAdapters.immutableTypeMap(); //returns the immutable interfaces and their implementation
+Map<Type, JsonDeserializer<?>> adapters = TypeAdapters.immutableTypeMap(); //returns the immutable interfaces and their implementation
 ```
 On the other hand,
 ```java
-  Map<Type, JsonDeserializer<?>> adapters = TypeAdapters.immutableImplemntationMap(); //returns the jdk interfaces and their corresponding immutable collection
+Map<Type, JsonDeserializer<?>> adapters = TypeAdapters.immutableImplemntationMap(); //returns the jdk interfaces and their corresponding immutable collection
 ```
 
 To use the Optional type factory..
 ```java
-final Gson gson = new GsonBuilder().registerTypeAdapterFactory( OptionalTypeFactory.forGuava() ).create();
+Gson gson = new GsonBuilder().registerTypeAdapterFactory( OptionalTypeFactory.forGuava() ).create();
 ```
 Or, if you want to use the new JDK Optional class.. 
 ```java
-final Gson gson = new GsonBuilder().registerTypeAdapterFactory( OptionalTypeFactory.forJDK() ).create();
+Gson gson = new GsonBuilder().registerTypeAdapterFactory( OptionalTypeFactory.forJDK() ).create();
 ```
 
 ### What?
