@@ -2,7 +2,6 @@ package com.tyler.gson.immutable;
 
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 import java.util.Set;
@@ -38,15 +37,7 @@ public class ImmutableSortedSetDeserializerTest {
 		assertEquals( Iterables.get( tester.set, 1), "b" );
 		assertEquals( Iterables.get( tester.set, 2), "c" );
 	}
-	
-	@Test( expected = ClassCastException.class )
-	public void testDeserializeImmutableInterface_3() {
-		final Gson gson = new GsonBuilder().registerTypeAdapter(ImmutableSortedSet.class, new ImmutableSortedSetDeserializer()).create();
-		ImmutableInterface tester = gson.fromJson( "{ \"set\" : [1,2,3] }", ImmutableInterface.class );	
-		
-		assertNotNull( Iterables.get( tester.set, 0).getClass() );
-	}
-	
+
 	@Test
 	public void testDeserializeImplemntation_1() {
 		final Gson gson = new GsonBuilder().registerTypeAdapter(SortedSet.class, new ImmutableSortedSetDeserializer()).create();
@@ -64,18 +55,8 @@ public class ImmutableSortedSetDeserializerTest {
 		assertEquals( Iterables.get( tester.set, 1), "b" );
 		assertEquals( Iterables.get( tester.set, 2), "c" );
 	}
-	
-	@Test( expected = ClassCastException.class )
-	public void testDeserializeImmutableImplemntation_3() {
-		final Gson gson = new GsonBuilder().registerTypeAdapter(SortedSet.class, new ImmutableSortedSetDeserializer()).create();
-		ImmutableImplementation tester = gson.fromJson( "{ \"set\" : [1,2,3] }", ImmutableImplementation.class );
-		
-		assertNotNull( Iterables.get( tester.set, 0).getClass() );		
-	}
-		
-	
-	
-	private static final class ImmutableInterface { 
+
+	private static final class ImmutableInterface {
 		private final ImmutableSortedSet<String> set;
 		
 		private ImmutableInterface(){
