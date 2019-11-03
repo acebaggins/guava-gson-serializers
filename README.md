@@ -1,71 +1,77 @@
-gson-serializers
+guava-gson-serializers
 ================
 
-Expanded serialization for Gson to include Guava ImmutableCollections, ImmutableMaps, and Optionals.
+#### Expanded Gson serialization for Guava ImmutableCollections, ImmutableMaps, and Optionals.
 
-**New** For the Java 8 release, the JDK Optional class is now supported.
+I originally included a TypeFactory for both Optional (java.util and Guava) but that was a long time ago and I think
+most people have switched over to `java.util.Optional`. 
 
-All of the JDK based ImmutableCollections from [the Guava immutable collections page] (https://code.google.com/p/guava-libraries/wiki/ImmutableCollectionsExplained) are supported.
-
-
-
+There are a lot of libraries that handle serialization of the Java 8 classes (Optional, Instant, etc) so I'll 
+deprecate `java.util.Optional` factory and keep the original Guava factory and keep this library more Guava-centric.
 
 #### Why?
-Deserializing ImmutableCollections became an issue for me when I had to serialize something I hadn't intended to serialize. Rather than changing code or compromising thread-safety it may be a better idea just to let ImmutableCollections continue being ImmutableCollections. 
-
-Being able to deserialize a List as an ImmutableList isn't something I've done but.. it's there.
-
-Serializing/deserializing Optionals was less of a real-world scenario and more of something I did for fun.
+Re-writing serializers is tedious!
 
 ### How?
 
 A few ways. 
 
-
 For a specific class..
 
-```java
+```
 Gson gson = new GsonBuilder().registerTypeAdapter(ImmutableList.class, new ImmutableListDeserializer()).create();
 ```
-or, if the mood grabs you..
 
-```java
+or, if the mood grabs you.. (but really don't do this)
+```
 Gson gson = new GsonBuilder().registerTypeAdapter(List.class, new ImmutableListDeserializer()).create();
 ```
-TypeAdapters has convenience methods to grab all of the adapters.
-```java
-Map<Type, JsonDeserializer<?>> adapters = TypeAdapters.immutableTypeMap(); //returns the immutable interfaces and their implementation
+
+or, the easiest way
 ```
-On the other hand,
-```java
-Map<Type, JsonDeserializer<?>> adapters = TypeAdapters.immutableImplemntationMap(); //returns the jdk interfaces and their corresponding immutable collection
+public Gson getGson() {
+  return ImmutableTypeAdapters.withImmutableCollectionSerializers(new GsonBuilder())
+    .registerTypeAdapterFactory(OptionalTypeFactory.forJDK()) // you probably dont need this
+    .create();
+}
 ```
 
-To use the Optional type factory..
-```java
-Gson gson = new GsonBuilder().registerTypeAdapterFactory( OptionalTypeFactory.forGuava() ).create();
+### Optionals
+
+#### JDK  (deprecated)
 ```
-Or, if you want to use the new JDK Optional class.. 
-```java
-Gson gson = new GsonBuilder().registerTypeAdapterFactory( OptionalTypeFactory.forJDK() ).create();
+Gson gson = new GsonBuilder().registerTypeAdapterFactory(OptionalTypeFactory.forJDK()).create();
 ```
+
+#### Guava
+```
+Gson gson = new GsonBuilder().registerTypeAdapterFactory(OptionalTypeFactory.forGuava()).create();
+```
+
 
 ### What?
 
-Targeted for JDK 8. 
-
-
 ##### Currently supported
-* ImmutableList (List)
-* ImmutableSet (Set)
-* ImmutableSortedSet (SortedSet)
-* ImmutableMap (Map)
-* ImmutableSortedMap (SortedMap) 
-* [Optionals] (https://code.google.com/p/guava-libraries/wiki/UsingAndAvoidingNullExplained#Optional)
-* JDK 8 Optionals
+
+* ImmutableList
+* ImmutableSet
+* ImmutableSortedSet
+* ImmutableBiMap
+* ImmutableMap
+* ImmutableBiMap
+* ImmutableSortedMap 
+* Optionals (java.util and guava)
+
+#### Future support (maybe)
+
+* ImmutableList/SetMultimap
+* Whatever anyone asks me to do
 
 ### Where? 
-That's a weird question.
+
+Github packages registry!
+`https://maven.pkg.github.com/acebaggins/guava-gson-serializers`
 
 ### Who? 
+
 Built by me for the wonderful Guava and Gson libraries. 

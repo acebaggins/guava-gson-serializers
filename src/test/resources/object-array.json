@@ -1,0 +1,20 @@
+[
+  {
+    "stringField": "string!",
+    "stringFields": [
+      "string one",
+      "string two"
+    ],
+    "booleanField": true,
+    "intField": 1775
+  },
+  {
+    "stringField": "string again!",
+    "stringFields": [
+      "string three",
+      "string four"
+    ],
+    "booleanField": false,
+    "intField": 1776
+  }
+]
