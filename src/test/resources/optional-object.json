@@ -1,0 +1,9 @@
+{
+  "stringField": "string!",
+  "stringFields": [
+    "string one",
+    "string two"
+  ],
+  "booleanField": true,
+  "intField": 1775
+}

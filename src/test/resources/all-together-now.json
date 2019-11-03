@@ -1,0 +1,140 @@
+{
+  "list": [
+    {
+      "stringField": "string!",
+      "stringFields": [
+        "string one",
+        "string two"
+      ],
+      "booleanField": true,
+      "intField": 1775
+    },
+    {
+      "stringField": "string again!",
+      "stringFields": [
+        "string three",
+        "string four"
+      ],
+      "booleanField": false,
+      "intField": 1776
+    }
+  ],
+  "set": [
+    {
+      "stringField": "string!",
+      "stringFields": [
+        "string one",
+        "string two"
+      ],
+      "booleanField": true,
+      "intField": 1775
+    },
+    {
+      "stringField": "string again!",
+      "stringFields": [
+        "string three",
+        "string four"
+      ],
+      "booleanField": false,
+      "intField": 1776
+    }
+  ],
+  "sortedSet": [
+    {
+      "stringField": "string!",
+      "stringFields": [
+        "string one",
+        "string two"
+      ],
+      "booleanField": true,
+      "intField": 1775
+    },
+    {
+      "stringField": "string again!",
+      "stringFields": [
+        "string three",
+        "string four"
+      ],
+      "booleanField": false,
+      "intField": 1776
+    }
+  ],
+  "biMap": {
+    "a": {
+      "stringField": "string!",
+      "stringFields": [
+        "string one",
+        "string two"
+      ],
+      "booleanField": true,
+      "intField": 1775
+    },
+    "b": {
+      "stringField": "string again!",
+      "stringFields": [
+        "string three",
+        "string four"
+      ],
+      "booleanField": false,
+      "intField": 1776
+    }
+  },
+  "map": {
+    "a": {
+      "stringField": "string!",
+      "stringFields": [
+        "string one",
+        "string two"
+      ],
+      "booleanField": true,
+      "intField": 1775
+    },
+    "b": {
+      "stringField": "string again!",
+      "stringFields": [
+        "string three",
+        "string four"
+      ],
+      "booleanField": false,
+      "intField": 1776
+    }
+  },
+  "sortedMap": {
+    "a": {
+      "stringField": "string!",
+      "stringFields": [
+        "string one",
+        "string two"
+      ],
+      "booleanField": true,
+      "intField": 1775
+    },
+    "b": {
+      "stringField": "string again!",
+      "stringFields": [
+        "string three",
+        "string four"
+      ],
+      "booleanField": false,
+      "intField": 1776
+    }
+  },
+  "optional": {
+    "stringField": "string!",
+    "stringFields": [
+      "string one",
+      "string two"
+    ],
+    "booleanField": true,
+    "intField": 1775
+  },
+  "guavaOptional": {
+    "stringField": "string again!",
+    "stringFields": [
+      "string three",
+      "string four"
+    ],
+    "booleanField": false,
+    "intField": 1776
+  }
+}

@@ -1,0 +1,46 @@
+plugins {
+  id 'maven-publish'
+  id 'java'
+  id 'jacoco'
+  id 'nebula.release' version '13.0.0'
+}
+
+dependencies {
+  compile 'com.google.guava:guava:28.1-jre'
+  compile 'com.google.code.gson:gson:2.8.6'
+
+  testCompile 'org.assertj:assertj-core:3.14.0'
+  testCompile 'org.junit.jupiter:junit-jupiter-params:5.4.2'
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
+  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+}
+
+test {
+  useJUnitPlatform()
+}
+
+repositories {
+  mavenCentral()
+}
+
+publishing {
+  repositories {
+    maven {
+      name = "GitHubPackages"
+      url = uri("https://maven.pkg.github.com/acebaggins/guava-gson-serializers")
+      credentials {
+        username = project.findProperty("gpr.user") ?: System.getenv("GPR_USER")
+        password = project.findProperty("gpr.key") ?: System.getenv("GPR_API_KEY")
+      }
+    }
+  }
+
+  publications {
+    gpr(MavenPublication) {
+      from(components.java)
+    }
+  }
+}
+
+tasks.test.finalizedBy(tasks.jacocoTestReport)
+tasks.check.finalizedBy(tasks.jacocoTestReport)

@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-/.settings/
-/.project
-/.classpath
-=======
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.next
-release.properties
->>>>>>> 2e0fba09495dc6bfe5349f93e6aad1715fae59e3
+.idea/
+out/
+.gradle/
+build/
