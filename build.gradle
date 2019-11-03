@@ -5,6 +5,14 @@ plugins {
   id 'nebula.release' version '13.0.0'
   id 'nebula.maven-nebula-publish' version '14.0.0'
   id 'nebula.source-jar' version '14.0.0'
+  id 'com.github.kt3k.coveralls' version '2.8.4'
+}
+
+jacocoTestReport {
+  reports {
+    xml.enabled = true // coveralls plugin depends on xml format report
+    html.enabled = true
+  }
 }
 
 dependencies {
@@ -23,6 +31,10 @@ test {
 
 repositories {
   mavenCentral()
+}
+
+coveralls {
+  jacocoReportPath 'build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml'
 }
 
 publishing {

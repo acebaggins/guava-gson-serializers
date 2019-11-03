@@ -1,5 +1,8 @@
-guava-gson-serializers
-================
+# guava-gson-serializers
+[![Build Status](https://travis-ci.com/acebaggins/guava-gson-serializers.svg?branch=master)](https://travis-ci.com/acebaggins/guava-gson-serializers)
+[![Coverage Status](https://coveralls.io/repos/github/acebaggins/guava-gson-serializers/badge.svg?branch=master)](https://coveralls.io/github/acebaggins/guava-gson-serializers?branch=master)
+[![Apache 2.0](https://img.shields.io/github/license/nebula-plugins/nebula-publishing-plugin.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+
 
 #### Expanded Gson serialization for Guava ImmutableCollections, ImmutableMaps, and Optionals.
 
